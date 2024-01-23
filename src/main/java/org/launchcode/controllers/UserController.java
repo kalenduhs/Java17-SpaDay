@@ -1,5 +1,6 @@
 package org.launchcode.controllers;
 
+import org.launchcode.data.UserData;
 import org.launchcode.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("user")
 public class UserController {
 
+    @GetMapping
+    public String displayUsers(Model model) {
+        model.addAttribute("users", UserData.getAll());
+        return"user/index";
+    }
+
     @GetMapping("/add")
     public String displayAddUserForm() {
         return "user/add";
@@ -23,7 +30,8 @@ public class UserController {
         model.addAttribute("username", user.getUsername());
         model.addAttribute("email", user.getEmail());
         if (user.getPassword().equals(verify)) {
-            return "user/index";
+            UserData.add(user);
+            return "redirect:/user";
         } else {
             model.addAttribute("error", "Please Enter the Same Password");
             return "user/add";
