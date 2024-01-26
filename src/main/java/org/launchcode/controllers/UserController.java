@@ -30,8 +30,7 @@ public class UserController {
 //            model.addAttribute("error", "Passwords do not match");
 //            return "user/add";
 //        }
-        if (errors.hasErrors() || !user.getPassword().equals(verify)) {
-            model.addAttribute("error", "Passwords do not match");
+        if (errors.hasErrors()) {
             return "user/add";
         } else {
             return "user/index";
