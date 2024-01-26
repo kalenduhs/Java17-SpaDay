@@ -33,7 +33,7 @@ public class User {
     }
 
     private void checkPassword() {
-        if (!(getVerifyPassword().equals(getPassword()))) {
+        if (password != null && verifyPassword != null && !(getVerifyPassword().equals(getPassword()))) {
             setVerifyPassword(null);
         }
     }
