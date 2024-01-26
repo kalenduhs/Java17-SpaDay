@@ -14,7 +14,7 @@
 
   <label>
     Email:
-    <input type = 'email' name = 'email' th:value="${email}">
+    <input type = 'text' name = 'email' th:value="${email}">
   </label>
 
   <label>
@@ -27,10 +27,15 @@
     <input type = 'password' name = 'verify'>
   </label>
 
+  <p th:errors="${user.username}"></p>
+  <p th:errors="${user.email}"></p>
+  <p th:errors="${user.password}"></p>
   <p th:text="${error}"></p>
 
   <input type = 'submit' value = 'Sign Up'>
 </form>
+
+<p th:text="${errorMsg}" style="color:red;"></p>
 
 </body>
 </html>
